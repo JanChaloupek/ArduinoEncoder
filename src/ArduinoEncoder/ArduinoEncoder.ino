@@ -4,7 +4,7 @@
   Datum: 7.12.2025
 
   Přehled:
-  - Čte dva rotační enkodéry (levý na D2/D3 s HW interrupt, pravý na D4/D5 s PCINT).
+  - Čte dva rotační enkodéry (levý na D2/D4, pravý na D3/D5).
   - Zobrazuje hodnoty na dvou TM1638 panelech (levý: D6/D7/D8, pravý: D9/D10/D11).
   - Každý panel ukazuje znak panelu (L/r), režim (d/f/b) a 6cifernou hodnotu.
   - Tlačítka se čtou střídavě (levý, pravý) s intervalem 800 ms, aby se minimalizoval zásah do ISR.
