@@ -29,7 +29,6 @@
 
 #include <Wire.h>
 #include <EEPROM.h>
-#include <PinChangeInterrupt.h>
 #include <TM1638plus.h>
 
 // Vlastní třídy
@@ -51,8 +50,8 @@
 // ==============================
 // Globální instance tříd
 // ==============================
-Encoder LeftEncoder(2, 3);    // Levý enkodér na D2/D3 (HW interrupt)
-Encoder RightEncoder(4, 5);   // Pravý enkodér na D4/D5 (PCINT)
+Encoder LeftEncoder(2, 4);   // Levý enkodér: A=D2 (HW INT0), B=D4
+Encoder RightEncoder(3, 5);  // Pravý enkodér: A=D3 (HW INT1), B=D5
 
 DisplayController leftDisplay(STB_LEFT, CLK_LEFT, DIO_LEFT, 'L');
 DisplayController rightDisplay(STB_RIGHT, CLK_RIGHT, DIO_RIGHT, 'r');
@@ -99,10 +98,8 @@ void setup() {
   Wire.onReceive(onReceive);
 
   // Přerušení pro enkodéry
-  // Levý: HW interrupt na D2
-  attachInterrupt(digitalPinToInterrupt(2), isrLeftA, RISING);
-  // Pravý: PCINT na D4 (přerušení na změnu pinu v PCINT skupině)
-  attachPCINT(digitalPinToPCINT(4), isrRightA, RISING);
+  attachInterrupt(digitalPinToInterrupt(2), isrLeftA, RISING);   // Levý enkodér A na D2 (INT0)
+  attachInterrupt(digitalPinToInterrupt(3), isrRightA, RISING);  // Pravý enkodér A na D3 (INT1)
 
   // Načtení timeoutu z EEPROM (validace rozumného rozsahu)
   unsigned int storedTimeout;
@@ -177,12 +174,12 @@ void loop() {
     leftDisplay.renderValue(leftVal, displayMode);
     rightDisplay.renderValue(rightVal, displayMode);
 
-    Serial.print("Left: ");
-    Serial.print(leftVal);
-    Serial.print(" | Right: ");
-    Serial.print(rightVal);
-    Serial.print(" | Mode: ");
-    Serial.println(displayMode);
+    // Serial.print("Left: ");
+    // Serial.print(leftVal);
+    // Serial.print(" | Right: ");
+    // Serial.print(rightVal);
+    // Serial.print(" | Mode: ");
+    // Serial.println(displayMode);
 
     lastUpdate = now;
   }
