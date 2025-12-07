@@ -10,9 +10,9 @@ Arduino Nano funguje zároveň jako I²C slave (adresa `0x08`) a poskytuje data 
 | Funkce            | Pin Arduino | Poznámka                  |
 |-------------------|-------------|---------------------------|
 | Levý enkodér A    | D2          | HW interrupt (ideální)    |
-| Levý enkodér B    | D3          | HW interrupt (ideální)    |
-| Pravý enkodér A   | D4          | PCINT                     |
-| Pravý enkodér B   | D5          | PCINT                     |
+| Levý enkodér B    | D4          |                           |
+| Pravý enkodér A   | D3          | HW interrupt (ideální)    |
+| Pravý enkodér B   | D5          |                           |
 | Levý panel STB    | D6          | Chip select               |
 | Levý panel CLK    | D7          | Hodiny                    |
 | Levý panel DIO    | D8          | Data (obousměrné)         |
