@@ -195,7 +195,7 @@ void isrLeftA() {
   LeftEncoder.handlePulseA();
 }
 
-// ISR pro pravý enkodér (kanál A) přes PCINT
+// ISR pro pravý enkodér (kanál A)
 void isrRightA() {
   RightEncoder.handlePulseA();
 }
