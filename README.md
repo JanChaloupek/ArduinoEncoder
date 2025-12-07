@@ -6,7 +6,7 @@ Arduino Nano funguje zároveň jako I²C slave (adresa `0x08`) a poskytuje data 
 ---
 
 ## Zapojení pinů Arduino Nano
-```
+
 | Funkce            | Pin Arduino | Poznámka                  |
 |-------------------|-------------|---------------------------|
 | Levý enkodér A    | D2          | HW interrupt (ideální)    |
@@ -21,7 +21,7 @@ Arduino Nano funguje zároveň jako I²C slave (adresa `0x08`) a poskytuje data 
 | Pravý panel DIO   | D11         | Data (obousměrné)         |
 | I2C SDA           | A4          | Datová linka I2C          |
 | I2C SCL           | A5          | Hodiny I2C                |
-```
+
 ---
 
 ## Ovládání tlačítek na TM1638
@@ -63,8 +63,8 @@ Protokol je navržen tak, aby byl přehledný, rozšiřitelný a jednoznačný.
 |--------|------|----------------------------------------------------------|----------------------------------------------------------------------------------|
 | Reset  | `0x01` | Vynuluje všechny čítače, směry a časové značky           | Řetězec `"OK"`                                                                   |
 | Timeout| `0x02` | Nastavení nebo vyčtení timeoutu pro reset směru (EEPROM) | - Jen `0x02`: Arduino vrátí aktuální `DIR_TIMEOUT` (2 bajty, `uint16_t`)<br>- `0x02` + 2 bajty: Arduino nastaví novou hodnotu a uloží ji do EEPROM (zápis proběhne bezpečně jen když motory stojí) |
-| M1 data| `0x11` | Čtení dat pro enkodér M1                                 | Forward (4B, `long`)<br>Backward (4B, `long`)<br>Dir (1B, `int8_t`)<br>LastPulse (4B, `unsigned long`) |
-| M2 data| `0x21` | Čtení dat pro enkodér M2                                 | Forward (4B, `long`)<br>Backward (4B, `long`)<br>Dir (1B, `int8_t`)<br>LastPulse (4B, `unsigned long`) |
+| M1 data| `0x11` | Čtení dat pro enkodér M1 (levý)             | Forward (4B, `long`)<br>Backward (4B, `long`)<br>Dir (1B, `int8_t`)<br>LastPulse (4B, `unsigned long`) |
+| M2 data| `0x21` | Čtení dat pro enkodér M2 (pravý)                          | Forward (4B, `long`)<br>Backward (4B, `long`)<br>Dir (1B, `int8_t`)<br>LastPulse (4B, `unsigned long`) |
 
 ---
 
