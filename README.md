@@ -80,9 +80,8 @@ Protokol je navržen tak, aby byl přehledný, rozšiřitelný a jednoznačný.
   - `0` = stojí (automaticky resetováno po `DIR_TIMEOUT` ms bez pulsu)
 
 - **LastPulse**  
-  Čas posledního pulzu v milisekundách od startu (`millis()`).  
-  Hodnota se ukládá mimo ISR, aby přerušení byla co nejrychlejší.
-
+  Čas posledního pulzu v milisekundách od startu (`millis()`).
+  
 - **DIR_TIMEOUT**  
   Hodnota v milisekundách, po které se směr resetuje na `0`, pokud nepřišel žádný puls.  
   Lze ji nastavit příkazem `0x02` a ukládá se do EEPROM.  
